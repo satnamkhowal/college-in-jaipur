@@ -29,6 +29,10 @@ php -S localhost:8000
 
 Then open `http://localhost:8000`. Until installation, public pages use built-in starter listings; enquiry submission requires the database.
 
+## SEO blog system
+
+The project exposes 1,000 Hinglish guides across college, course, Jaipur-area and comparison clusters. URLs use `/blog/{slug}/`, one shared PHP template and a centralized deterministic dataset, avoiding 1,000 duplicate physical templates. `sitemap.php` includes all blog URLs and `robots.txt` points crawlers to it.
+
 ## Updating college records
 
 The initial catalog is intentionally a verified-later starter set. Institution names, approvals, courses, fees and admissions can change; verify each record using the institution and relevant regulator before publication. More colleges can be added directly to the `colleges` table or through a future admin panel.

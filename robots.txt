@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /install/
+Disallow: /config/
+Sitemap: https://collegeinjaipur.com/sitemap.php

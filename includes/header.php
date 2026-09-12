@@ -14,6 +14,7 @@ $pageDescription = $pageDescription ?? 'Explore colleges in Jaipur, compare cour
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link href="<?= url('assets/css/style.css') ?>" rel="stylesheet">
+    <link href="<?= url('assets/css/blog.css') ?>" rel="stylesheet">
 </head>
 <body>
 <div class="topbar py-2 text-white">
@@ -32,6 +33,7 @@ $pageDescription = $pageDescription ?? 'Explore colleges in Jaipur, compare cour
             <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                 <li class="nav-item"><a class="nav-link" href="<?= url('colleges.php') ?>">Colleges</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= url('courses.php') ?>">Courses</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= url('blog/') ?>">Blog</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= url('compare.php') ?>">Compare</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= url('about.php') ?>">About</a></li>
                 <li class="nav-item"><a class="btn btn-primary rounded-pill px-4" href="<?= url('contact.php') ?>">Admission Help</a></li>
