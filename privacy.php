@@ -1,0 +1,3 @@
+<?php require_once __DIR__.'/includes/functions.php'; $pageTitle='Privacy Policy | College in Jaipur'; require __DIR__.'/includes/header.php'; ?>
+<main class="container py-5"><h1 class="fw-bold">Privacy policy</h1><p>Information submitted through enquiry forms is used to respond to admission-related requests. We do not ask for payment details through this website. Contact us to request correction or deletion of your submitted information.</p><p>Basic server logs may store IP address, browser information and request time for security and troubleshooting.</p></main>
+<?php require __DIR__.'/includes/footer.php'; ?>

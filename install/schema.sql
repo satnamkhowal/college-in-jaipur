@@ -1,0 +1,60 @@
+CREATE TABLE IF NOT EXISTS colleges (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  slug VARCHAR(180) NOT NULL UNIQUE,
+  name VARCHAR(255) NOT NULL,
+  short_name VARCHAR(100) DEFAULT NULL,
+  type VARCHAR(80) NOT NULL,
+  area VARCHAR(120) NOT NULL,
+  address VARCHAR(255) DEFAULT NULL,
+  established SMALLINT UNSIGNED DEFAULT NULL,
+  website VARCHAR(255) DEFAULT NULL,
+  description TEXT NOT NULL,
+  featured TINYINT(1) NOT NULL DEFAULT 0,
+  status TINYINT(1) NOT NULL DEFAULT 1,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_colleges_type (type),
+  INDEX idx_colleges_area (area),
+  INDEX idx_colleges_featured (featured, status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS courses (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  slug VARCHAR(160) NOT NULL UNIQUE,
+  name VARCHAR(180) NOT NULL,
+  stream VARCHAR(100) NOT NULL,
+  level VARCHAR(50) DEFAULT NULL,
+  duration VARCHAR(50) DEFAULT NULL,
+  status TINYINT(1) NOT NULL DEFAULT 1,
+  INDEX idx_courses_stream (stream)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS college_courses (
+  college_id INT UNSIGNED NOT NULL,
+  course_id INT UNSIGNED NOT NULL,
+  fee_note VARCHAR(180) DEFAULT NULL,
+  admission_note VARCHAR(255) DEFAULT NULL,
+  PRIMARY KEY (college_id, course_id),
+  CONSTRAINT fk_cc_college FOREIGN KEY (college_id) REFERENCES colleges(id) ON DELETE CASCADE,
+  CONSTRAINT fk_cc_course FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS enquiries (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(120) NOT NULL,
+  phone VARCHAR(25) NOT NULL,
+  email VARCHAR(180) DEFAULT NULL,
+  course VARCHAR(180) DEFAULT NULL,
+  college VARCHAR(255) DEFAULT NULL,
+  message TEXT DEFAULT NULL,
+  status ENUM('new','contacted','closed') NOT NULL DEFAULT 'new',
+  ip_address VARCHAR(45) DEFAULT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_enquiries_status_date (status, created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS site_settings (
+  setting_key VARCHAR(100) PRIMARY KEY,
+  setting_value TEXT DEFAULT NULL,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
