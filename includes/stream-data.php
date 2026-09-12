@@ -1,0 +1,26 @@
+<?php
+declare(strict_types=1);
+
+function studyStreams(): array
+{
+    return [
+        'engineering' => ['name'=>'Engineering','title'=>'Best Engineering Colleges in Jaipur','course_examples'=>'B.Tech, M.Tech, diploma and research programmes','eligibility'=>'Most B.Tech routes require 10+2 with Physics and Mathematics. Admission may use JEE Main, REAP, university tests or institute rules.','careers'=>'Software, core engineering, analytics, product, consulting and public-sector roles','icon'=>'cpu'],
+        'mba' => ['name'=>'MBA','title'=>'Best MBA Colleges in Jaipur','course_examples'=>'MBA, PGDM and management specialisations','eligibility'=>'A recognised bachelor’s degree is normally required. CAT, MAT, CMAT or institution-specific selection may apply.','careers'=>'Marketing, finance, HR, operations, analytics, consulting and entrepreneurship','icon'=>'briefcase'],
+        'bba' => ['name'=>'BBA','title'=>'Best BBA Colleges in Jaipur','course_examples'=>'BBA and undergraduate management programmes','eligibility'=>'Applicants generally need a recognised 10+2 qualification; minimum marks and selection processes vary by institution.','careers'=>'Business development, marketing, operations, finance support and postgraduate management','icon'=>'bar-chart'],
+        'bca' => ['name'=>'BCA','title'=>'Best BCA Colleges in Jaipur','course_examples'=>'BCA, computer applications and software-focused undergraduate programmes','eligibility'=>'A recognised 10+2 qualification is normally required. Mathematics requirements differ, so verify the current prospectus.','careers'=>'Software development, web development, testing, support, data roles and MCA pathways','icon'=>'laptop'],
+        'mca' => ['name'=>'MCA','title'=>'Best MCA Colleges in Jaipur','course_examples'=>'MCA and postgraduate computer application programmes','eligibility'=>'A relevant bachelor’s degree and specified mathematics background may be required. Entrance or merit rules vary.','careers'=>'Software engineering, full-stack development, cloud, data engineering and technical consulting','icon'=>'code-slash'],
+        'medical' => ['name'=>'Medical','title'=>'Medical Colleges in Jaipur','course_examples'=>'MBBS and postgraduate medical programmes','eligibility'=>'MBBS admission is governed by current NEET-UG eligibility and counselling rules. Always verify seat and recognition data with NMC and the counselling authority.','careers'=>'Clinical practice, postgraduate specialisation, research, public health and hospital services','icon'=>'heart-pulse'],
+        'pharmacy' => ['name'=>'Pharmacy','title'=>'Pharmacy Colleges in Jaipur','course_examples'=>'D.Pharm, B.Pharm, M.Pharm and related programmes','eligibility'=>'Programme level determines eligibility. Science subjects and entrance or counselling rules may apply.','careers'=>'Pharmaceutical industry, quality, regulatory affairs, clinical research, sales and higher study','icon'=>'capsule'],
+        'commerce' => ['name'=>'Commerce','title'=>'Best Commerce Colleges in Jaipur','course_examples'=>'B.Com, M.Com and accounting or finance programmes','eligibility'=>'A recognised 10+2 qualification is generally required for undergraduate admission; subject and merit rules vary.','careers'=>'Accounting, banking, finance, taxation, analytics, professional qualifications and business','icon'=>'graph-up-arrow'],
+        'science' => ['name'=>'Science','title'=>'Best Science Colleges in Jaipur','course_examples'=>'B.Sc, M.Sc and laboratory or research-oriented programmes','eligibility'=>'Required 10+2 subjects depend on the chosen discipline. Postgraduate entry normally needs a relevant bachelor’s degree.','careers'=>'Research, laboratories, analytics, education, healthcare support and specialised postgraduate study','icon'=>'flask'],
+        'arts' => ['name'=>'Arts & Humanities','title'=>'Best Arts Colleges in Jaipur','course_examples'=>'BA, MA, languages, social sciences and humanities programmes','eligibility'=>'A recognised 10+2 qualification is normally required for undergraduate study; merit and subject rules differ.','careers'=>'Civil services, communication, policy, research, education, media and social-sector work','icon'=>'palette'],
+        'law' => ['name'=>'Law','title'=>'Best Law Colleges in Jaipur','course_examples'=>'BA LLB, BBA LLB, LLB, LLM and legal studies','eligibility'=>'Integrated law follows 10+2, while three-year LLB follows graduation. CLAT or institution-specific admission may apply.','careers'=>'Litigation, corporate law, compliance, policy, judiciary preparation and legal operations','icon'=>'bank'],
+        'design' => ['name'=>'Design','title'=>'Best Design Colleges in Jaipur','course_examples'=>'B.Des, M.Des, visual communication, fashion and UI/UX programmes','eligibility'=>'A recognised qualifying examination is required; portfolios, aptitude tests and interviews are common.','careers'=>'Product, communication, fashion, interaction, UI/UX and independent design practice','icon'=>'pen'],
+    ];
+}
+
+function getStudyStream(string $slug): ?array
+{
+    $streams = studyStreams();
+    return isset($streams[$slug]) ? ['slug'=>$slug] + $streams[$slug] : null;
+}

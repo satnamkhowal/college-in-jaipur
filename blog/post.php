@@ -3,6 +3,8 @@ require_once __DIR__ . '/../includes/blog-data.php';
 $post=getBlogPost(trim($_GET['slug']??''));
 if(!$post){http_response_code(404);$pageTitle='Guide not found';require __DIR__.'/../includes/header.php';echo '<main class="container py-5"><h1>Guide not found</h1><a href="'.url('blog/').'">Browse blog</a></main>';require __DIR__.'/../includes/footer.php';exit;}
 $pageTitle=$post['title'].' | College in Jaipur'; $pageDescription=$post['description']; $sections=blogArticleSections($post);
+$canonicalUrl='https://collegeinjaipur.com/blog/'.$post['slug'].'/';
+$robotsContent='noindex,follow';
 require __DIR__ . '/../includes/header.php';
 ?>
 <main><article><header class="page-heading py-5"><div class="container"><nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="<?= url() ?>">Home</a></li><li class="breadcrumb-item"><a href="<?= url('blog/') ?>">Blog</a></li><li class="breadcrumb-item active"><?= e($post['category']) ?></li></ol></nav><span class="badge bg-primary-subtle text-primary mb-3"><?= e($post['category']) ?></span><h1 class="display-6 fw-bold col-lg-10"><?= e($post['title']) ?></h1><p class="lead text-secondary col-lg-9"><?= e($post['description']) ?></p><div class="small text-secondary">Updated for 2026 · 8 minute read · College in Jaipur Editorial Team</div></div></header>

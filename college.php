@@ -2,8 +2,21 @@
 require_once __DIR__ . '/includes/functions.php';
 $college = getCollege(trim($_GET['slug'] ?? ''));
 if (!$college) { http_response_code(404); $pageTitle='College not found'; require __DIR__.'/includes/header.php'; echo '<main class="container py-5"><div class="alert alert-warning"><h1 class="h3">College not found</h1><a href="'.url('colleges.php').'">Browse colleges</a></div></main>'; require __DIR__.'/includes/footer.php'; exit; }
+$requestPath = parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);
+if ($requestPath === '/college.php') {
+    header('Location: /college/' . rawurlencode($college['slug']) . '/', true, 301);
+    exit;
+}
 $pageTitle = $college['name'] . ' – Courses, Admission & Details';
 $pageDescription = $college['description'];
+$canonicalUrl = 'https://collegeinjaipur.com/college/' . $college['slug'] . '/';
+$collegeSchema = [
+    '@context'=>'https://schema.org','@type'=>'CollegeOrUniversity','name'=>$college['name'],
+    'url'=>$canonicalUrl,'description'=>$college['description'],
+    'address'=>['@type'=>'PostalAddress','addressLocality'=>'Jaipur','addressRegion'=>'Rajasthan','addressCountry'=>'IN','streetAddress'=>$college['area']],
+];
+if (!empty($college['established'])) $collegeSchema['foundingDate'] = (string)$college['established'];
+$structuredData = [$collegeSchema];
 require __DIR__ . '/includes/header.php';
 ?>
 <main><section class="college-hero py-5 text-white"><div class="container"><nav aria-label="breadcrumb"><ol class="breadcrumb breadcrumb-light"><li class="breadcrumb-item"><a href="<?= url() ?>">Home</a></li><li class="breadcrumb-item"><a href="<?= url('colleges.php') ?>">Colleges</a></li><li class="breadcrumb-item active"><?= e($college['short_name']) ?></li></ol></nav><div class="d-flex flex-column flex-md-row gap-4 align-items-md-center"><div class="college-mark college-mark-lg bg-white text-primary"><?= e(substr($college['short_name'] ?: $college['name'],0,2)) ?></div><div><span class="badge text-bg-warning mb-2"><?= e($college['type']) ?></span><h1 class="display-6 fw-bold mb-2"><?= e($college['name']) ?></h1><p class="mb-0"><i class="bi bi-geo-alt me-1"></i><?= e($college['area']) ?>, Jaipur <?= !empty($college['established']) ? ' · Established '.e((string)$college['established']) : '' ?></p></div></div></div></section>

@@ -32,14 +32,14 @@ require __DIR__ . '/includes/header.php';
         <div class="d-flex justify-content-between align-items-end mb-4"><div><span class="eyebrow">Top choices</span><h2 class="fw-bold mb-0">Featured colleges in Jaipur</h2></div><a href="<?= url('colleges.php') ?>" class="btn btn-outline-primary rounded-pill">View all</a></div>
         <div class="row g-4">
             <?php foreach ($featured as $college): ?>
-            <div class="col-md-6 col-xl-4"><article class="card college-card h-100 border-0 shadow-sm"><div class="card-body p-4"><div class="college-mark mb-3"><?= e(substr($college['short_name'] ?: $college['name'], 0, 2)) ?></div><span class="badge bg-primary-subtle text-primary mb-2"><?= e($college['type']) ?></span><h3 class="h5 fw-bold"><?= e($college['name']) ?></h3><p class="small text-secondary"><i class="bi bi-geo-alt"></i> <?= e($college['area']) ?>, Jaipur</p><p class="text-secondary small"><?= e($college['description']) ?></p></div><div class="card-footer bg-white border-0 p-4 pt-0"><a class="btn btn-outline-primary w-100" href="<?= url('college.php?slug=' . urlencode($college['slug'])) ?>">View college details</a></div></article></div>
+            <div class="col-md-6 col-xl-4"><article class="card college-card h-100 border-0 shadow-sm"><div class="card-body p-4"><div class="college-mark mb-3"><?= e(substr($college['short_name'] ?: $college['name'], 0, 2)) ?></div><span class="badge bg-primary-subtle text-primary mb-2"><?= e($college['type']) ?></span><h3 class="h5 fw-bold"><?= e($college['name']) ?></h3><p class="small text-secondary"><i class="bi bi-geo-alt"></i> <?= e($college['area']) ?>, Jaipur</p><p class="text-secondary small"><?= e($college['description']) ?></p></div><div class="card-footer bg-white border-0 p-4 pt-0"><a class="btn btn-outline-primary w-100" href="<?= url('college/' . $college['slug'] . '/') ?>">View college details</a></div></article></div>
             <?php endforeach; ?>
         </div>
     </section>
 
     <section class="course-strip py-5"><div class="container"><span class="eyebrow">Browse by stream</span><h2 class="fw-bold mb-4">Popular study options</h2><div class="row g-3">
-        <?php foreach ([['Engineering','cpu'],['Management','briefcase'],['Computer Applications','laptop'],['Commerce','graph-up'],['Science','flask'],['Arts & Humanities','palette'],['Law','bank'],['Design','pen']] as [$course,$icon]): ?>
-        <div class="col-6 col-md-3"><a class="course-tile" href="<?= url('colleges.php?q='.urlencode($course)) ?>"><i class="bi bi-<?= $icon ?>"></i><span><?= e($course) ?></span></a></div>
+        <?php foreach ([['engineering','Engineering','cpu'],['mba','MBA','briefcase'],['bca','BCA','laptop'],['medical','Medical','heart-pulse'],['commerce','Commerce','graph-up'],['science','Science','flask'],['law','Law','bank'],['design','Design','pen']] as [$slug,$course,$icon]): ?>
+        <div class="col-6 col-md-3"><a class="course-tile" href="<?= url('courses/'.$slug.'/') ?>"><i class="bi bi-<?= $icon ?>"></i><span><?= e($course) ?></span></a></div>
         <?php endforeach; ?>
     </div></div></section>
 </main>

@@ -2,6 +2,8 @@ Options -Indexes
 DirectoryIndex index.php
 
 RewriteEngine On
+RewriteRule ^college/([^/]+)/?$ college.php?slug=$1 [L,QSA]
+RewriteRule ^courses/([^/]+)/?$ stream.php?slug=$1 [L,QSA]
 RewriteRule ^blog/([^/]+)/?$ blog/post.php?slug=$1 [L,QSA]
 
 <IfModule mod_headers.c>

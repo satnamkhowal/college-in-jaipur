@@ -8,6 +8,8 @@ if ($q) $posts = array_values(array_filter($posts, fn($p)=>str_contains(strtolow
 $page = max(1,(int)($_GET['page']??1)); $perPage=24; $totalPages=max(1,(int)ceil(count($posts)/$perPage)); $page=min($page,$totalPages); $visible=array_slice($posts,($page-1)*$perPage,$perPage);
 $pageTitle='College & Admission Blog in Jaipur | College in Jaipur';
 $pageDescription='Read Hinglish guides about Jaipur colleges, courses, admissions, fees, comparisons and student planning.';
+$canonicalUrl='https://collegeinjaipur.com/blog/';
+$robotsContent='noindex,follow';
 require __DIR__ . '/../includes/header.php';
 ?>
 <main><section class="page-heading py-5"><div class="container"><span class="eyebrow">Student resource hub</span><h1 class="fw-bold">Jaipur College & Admission Blog</h1><p class="text-secondary">1000 practical Hinglish guides for college research and admission planning.</p><form class="row g-2 mt-3"><div class="col-md-6"><input class="form-control form-control-lg" name="q" value="<?= e($q) ?>" placeholder="Search guides"></div><div class="col-md-3"><select class="form-select form-select-lg" name="category"><option value="">All categories</option><?php foreach(['College Guides','Course Guides','Area Guides','Comparisons'] as $item): ?><option <?= $category===$item?'selected':'' ?>><?= e($item) ?></option><?php endforeach; ?></select></div><div class="col-md-auto"><button class="btn btn-primary btn-lg">Search</button></div></form></div></section>

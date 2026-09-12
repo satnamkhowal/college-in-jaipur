@@ -48,7 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             file_put_contents($lockFile, 'Installed at ' . date(DATE_ATOM), LOCK_EX);
             $success = 'Installation completed. Tables and starter data are ready.';
         } catch (Throwable $exception) {
-            $error = 'Installation failed: ' . $exception->getMessage();
+            error_log('College in Jaipur installer: ' . $exception->getMessage());
+            $error = 'Installation failed. Check the database details, permissions and server error log.';
         }
     }
 }

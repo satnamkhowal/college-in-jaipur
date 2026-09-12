@@ -2,6 +2,8 @@
 $pageTitle = $pageTitle ?? 'College in Jaipur – Find Colleges, Courses & Admissions';
 $pageDescription = $pageDescription ?? 'Explore colleges in Jaipur, compare courses and find admission information.';
 $gtmId = 'GTM-WDB587JK';
+$canonicalUrl = $canonicalUrl ?? ('https://collegeinjaipur.com' . (parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/'));
+$robotsContent = $robotsContent ?? 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1';
 ?>
 <!doctype html>
 <html lang="en">
@@ -10,7 +12,14 @@ $gtmId = 'GTM-WDB587JK';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= e($pageTitle) ?></title>
     <meta name="description" content="<?= e($pageDescription) ?>">
-    <link rel="canonical" href="https://collegeinjaipur.com<?= e(parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/') ?>">
+    <meta name="robots" content="<?= e($robotsContent) ?>">
+    <link rel="canonical" href="<?= e($canonicalUrl) ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="College in Jaipur">
+    <meta property="og:title" content="<?= e($pageTitle) ?>">
+    <meta property="og:description" content="<?= e($pageDescription) ?>">
+    <meta property="og:url" content="<?= e($canonicalUrl) ?>">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/svg+xml" href="<?= url('assets/favicon.svg') ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
@@ -43,6 +52,9 @@ $gtmId = 'GTM-WDB587JK';
     <?php if (!empty($analyticsEvent) && is_array($analyticsEvent)): ?>
     <script>window.dataLayer.push(<?= json_encode($analyticsEvent, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>);</script>
     <?php endif; ?>
+    <?php foreach (($structuredData ?? []) as $schema): ?>
+    <script type="application/ld+json"><?= json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
+    <?php endforeach; ?>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->

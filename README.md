@@ -1,5 +1,7 @@
 # College in Jaipur
 
+Implementation priorities and source policy are documented in [docs/SEO_ROADMAP.md](docs/SEO_ROADMAP.md).
+
 Bootstrap-based PHP college discovery website for `https://collegeinjaipur.com/`, powered by Groot Software.
 
 ## Requirements
