@@ -9,6 +9,10 @@
         <hr class="border-secondary my-4"><div class="d-flex flex-column flex-md-row justify-content-between small text-white-50"><span>© <?= date('Y') ?> College in Jaipur.</span><span>Powered by Groot Software</span></div>
     </div>
 </footer>
+<div class="consent-banner shadow-lg" id="consentBanner" role="dialog" aria-label="Analytics preferences" hidden>
+    <div><strong>Help us improve College in Jaipur</strong><p class="mb-0 small text-secondary">We use Google Analytics to understand anonymous website usage. We never send your enquiry name, phone number or email to Analytics.</p></div>
+    <div class="d-flex gap-2 flex-shrink-0"><button class="btn btn-outline-secondary btn-sm" id="rejectAnalytics" type="button">Reject</button><button class="btn btn-primary btn-sm" id="acceptAnalytics" type="button">Accept analytics</button></div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="<?= url('assets/js/app.js') ?>"></script>
 </body></html>

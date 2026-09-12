@@ -1,6 +1,7 @@
 <?php
 $pageTitle = $pageTitle ?? 'College in Jaipur – Find Colleges, Courses & Admissions';
 $pageDescription = $pageDescription ?? 'Explore colleges in Jaipur, compare courses and find admission information.';
+$gtmId = 'GTM-WDB587JK';
 ?>
 <!doctype html>
 <html lang="en">
@@ -15,8 +16,38 @@ $pageDescription = $pageDescription ?? 'Explore colleges in Jaipur, compare cour
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link href="<?= url('assets/css/style.css') ?>" rel="stylesheet">
     <link href="<?= url('assets/css/blog.css') ?>" rel="stylesheet">
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        (function () {
+            var choice = localStorage.getItem('google_consent');
+            var granted = choice === 'granted' ? 'granted' : 'denied';
+            gtag('consent', 'default', {
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                analytics_storage: granted,
+                functionality_storage: 'granted',
+                security_storage: 'granted',
+                wait_for_update: 500
+            });
+        }());
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','<?= e($gtmId) ?>');</script>
+    <!-- End Google Tag Manager -->
+    <?php if (!empty($analyticsEvent) && is_array($analyticsEvent)): ?>
+    <script>window.dataLayer.push(<?= json_encode($analyticsEvent, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>);</script>
+    <?php endif; ?>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=<?= e($gtmId) ?>" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <div class="topbar py-2 text-white">
     <div class="container d-flex justify-content-between small">
         <span><i class="bi bi-geo-alt me-1"></i>Jaipur, Rajasthan</span>

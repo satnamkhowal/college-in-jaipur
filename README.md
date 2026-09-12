@@ -33,6 +33,15 @@ Then open `http://localhost:8000`. Until installation, public pages use built-in
 
 The project exposes 1,000 Hinglish guides across college, course, Jaipur-area and comparison clusters. URLs use `/blog/{slug}/`, one shared PHP template and a centralized deterministic dataset, avoiding 1,000 duplicate physical templates. `sitemap.php` includes all blog URLs and `robots.txt` points crawlers to it.
 
+## Google measurement setup
+
+- Google Tag Manager container: `GTM-WDB587JK`
+- Google Analytics 4 measurement ID: `G-8RHNPSWV7D`
+- GTM version `Initial GA4 setup` publishes the Google tag on initialization across all pages.
+- Consent Mode defaults analytics and advertising storage to denied until the visitor accepts analytics.
+- Data layer events: `generate_lead`, `admission_cta_click`, `college_search`, `compare_colleges`, and `consent_update`.
+- Personally identifiable enquiry fields are never pushed to the data layer.
+
 ## Updating college records
 
 The initial catalog is intentionally a verified-later starter set. Institution names, approvals, courses, fees and admissions can change; verify each record using the institution and relevant regulator before publication. More colleges can be added directly to the `colleges` table or through a future admin panel.
